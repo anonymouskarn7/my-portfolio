@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Karn | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&family=Outfit:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @keyframes floatName {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(40px);
+                /* Moves 40px to the right */
+            }
+
+            100% {
+                transform: translateX(0);
+                /* Returns to the start */
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 14s linear infinite;
+        }
+
+        .animate-float-name {
+            display: inline-block;
+            /* Required for transform to work correctly */
+            animation: floatName 6s ease-in-out infinite;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.07) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(51, 65, 85, 0.07) 0px, transparent 50%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        .title-font {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .music-pulse {
+            color: #10b981 !important;
+            animation: pulse-effect 1.5s infinite;
+        }
+
+        @keyframes pulse-effect {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.2);
+            transform: translateY(-5px);
+        }
+
+
+
+
+        /* Common Bug Style */
+        .bug {
+            position: fixed;
+            opacity: 0.7;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        /* 1. Top-Left to Bottom-Right */
+        @keyframes path-tl-br {
+            0% {
+                top: -5%;
+                left: -5%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(50vw, 50vh) rotate(180deg);
+            }
+
+            100% {
+                top: 105%;
+                left: 105%;
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* 2. Top-Right to Bottom-Left */
+        @keyframes path-tr-bl {
+            0% {
+                top: -5%;
+                right: -5%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-50vw, 50vh) rotate(-180deg);
+            }
+
+            100% {
+                top: 105%;
+                right: 105%;
+                transform: translate(0, 0) rotate(-360deg);
+            }
+        }
+
+        /* 3. Bottom-Left to Top-Right */
+        @keyframes path-bl-tr {
+            0% {
+                bottom: -5%;
+                left: -5%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(50vw, -50vh) rotate(180deg);
+            }
+
+            100% {
+                bottom: 105%;
+                left: 105%;
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* 4. Bottom-Right to Top-Left */
+        @keyframes path-br-tl {
+            0% {
+                bottom: -5%;
+                right: -5%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-50vw, -50vh) rotate(-180deg);
+            }
+
+            100% {
+                bottom: 105%;
+                right: 105%;
+                transform: translate(0, 0) rotate(-360deg);
+            }
+        }
+
+        /* Assigning speeds and animations */
+        .bug-top-left {
+            animation: path-tl-br 15s infinite;
+        }
+
+        .bug-top-right {
+            animation: path-tr-bl 18s infinite;
+            color: #10b981;
+        }
+
+        /* Emerald bug */
+        .bug-bottom-left {
+            animation: path-bl-tr 12s infinite;
+        }
+
+        .bug-bottom-right {
+            animation: path-br-tl 20s infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- The Four Corner Bugs -->
+    <div class="bug bug-top-left fixed z-50 pointer-events-none text-3xl">🪲</div>
+    <div class="bug bug-top-right fixed z-50 pointer-events-none text-3xl">🐞</div>
+    <div class="bug bug-bottom-left fixed z-50 pointer-events-none text-3xl">🐜</div>
+    <div class="bug bug-bottom-right fixed z-50 pointer-events-none text-3xl">🦗</div>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-lg glass-nav rounded-full px-6 py-3 flex justify-between items-center shadow-lg">
+        <span onclick="toggleMusic()" id="logo-ak"
+            class="font-mono font-black tracking-tighter cursor-pointer transition-all duration-300 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 bg-clip-text text-transparent hover:scale-110 select-none">
+            AK.
+        </span>
+        <audio id="bg-audio" loop>
+            <source src="Calm Down _ Made in Indian Classical – Flute & Sitar Instrumental 🎶 [55eQzS6YtDM].mp3"
+                type="audio/mpeg">
+        </audio>
+        <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            <a href="#home" class="hover:text-emerald-600 transition">Home</a>
+            <a href="#about" class="hover:text-emerald-600 transition">About</a>
+            <a href="#details" class="hover:text-emerald-600 transition">Details</a>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center px-6 text-center">
+        <h1
+            class="animate-float-name title-font text-7xl md:text-9xl font-black text-slate-900 mb-6 mt-6 tracking-tighter">
+            ABHISHEK<br>
+            <span class="text-emerald-500">KARN</span>
+        </h1>
+
+
+        <p
+            class="max-w-md font-mono font-medium leading-relaxed mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Computer Engineer crafting digital environments that are helpful, inclusive, and built for a smarter future.
+        </p>
+    </section>
+
+    <!-- Details Grid -->
+    <section id="details" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h2 class="title-font text-4xl font-black text-slate-900 uppercase">Expertise & Info</h2>
+                <p class="text-emerald-600 font-bold">Dynamic data powered by JavaScript</p>
+            </div>
+            <input type="text" id="searchBox" placeholder="Search Skills..."
+                class="px-6 py-3 rounded-2xl border-2 border-slate-100 outline-none focus:border-emerald-400 w-full md:w-64 transition-all bg-white/50">
+        </div>
+        <div id="dynamic-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="max-w-6xl mx-auto px-6 mb-24">
+        <div
+            class="bg-white/70 backdrop-blur-md rounded-[3rem] p-8 md:p-16 shadow-2xl flex flex-col md:flex-row items-center gap-12 border border-white/50">
+            <div class="w-full md:w-1/3 overflow-hidden rounded-[2.5rem] shadow-lg relative group aspect-square">
+                <img src="IMG_20190224_135433.jpg" alt="nature"
+                    class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-0">
+                <img src="FB_IMG_1702640690791.jpg" alt="religious"
+                    class="absolute inset-0 w-full h-full object-cover scale-125 opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100">
+            </div>
+            <div class="w-full md:w-2/3">
+                <h3 class="title-font text-3xl font-black mb-6 uppercase text-slate-900">The Engineer Behind the Code
+                </h3>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                    I don’t just write code; I look for meaningful ways to use it. As a <span
+                        class="text-emerald-600 font-bold">Computer Engineering Student</span>, I focus on the bridge
+                    between logic and human intuition.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="Critical thinking.pdf" target="_blank"
+                        class="bg-emerald-50 px-3 py-1.5 rounded-lg text-emerald-700 font-bold text-[10px] uppercase border border-emerald-100">Critical
+                        Thinking</a>
+                    <a href="Agile Project Management.pdf" target="_blank"
+                        class="bg-blue-50 px-3 py-1.5 rounded-lg text-blue-700 font-bold text-[10px] uppercase border border-blue-100">Agile
+                        Management</a>
+                    <a href="AI for Beginners.pdf" target="_blank"
+                        class="bg-purple-50 px-3 py-1.5 rounded-lg text-purple-700 font-bold text-[10px] uppercase border border-purple-100">AI
+                        Literacy</a>
+                    <a href="Introduction to Cybersecurity Awareness.pdf" target="_blank"
+                        class="bg-red-50 px-3 py-1.5 rounded-lg text-red-700 font-bold text-[10px] uppercase border border-red-100">Cybersecurity</a>
+                    <a href="Business communication.pdf" target="_blank"
+                        class="bg-cyan-50 px-3 py-1.5 rounded-lg text-cyan-700 font-bold text-[10px] uppercase border border-cyan-100">Business
+                        Comm</a>
+                    <a href="Effective presentation.pdf" target="_blank"
+                        class="bg-orange-50 px-3 py-1.5 rounded-lg text-orange-700 font-bold text-[10px] uppercase border border-orange-100">Presentation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact"
+        class="max-w-6xl mx-auto px-6 pb-12 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-center">
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/abhishek-karn-7b6699274/" target="_blank"
+                class="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                <i class="fa-brands fa-linkedin text-lg"></i>
+                <span>LinkedIn</span>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/abhishek.karn.902819" target="_blank"
+                class="flex items-center gap-2 hover:text-blue-600 transition-colors">
+                <i class="fa-brands fa-facebook text-lg"></i>
+                <span>Facebook</span>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/9779746588282" target="_blank"
+                class="flex items-center gap-2 hover:text-green-500 transition-colors">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>WhatsApp</span>
+            </a>
+
+            <!-- Emails -->
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                <a href="mailto:abhikarn101@gmail.com"
+                    class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i class="fa-solid fa-envelope text-lg"></i>
+                    <span>Business Email</span>
+                </a>
+                <a href="mailto:anonymous.karn7@gmail.com"
+                    class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i class="fa-solid fa-envelope-open-text text-lg"></i>
+                    <span>feedback Email</span>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Contact -->
+        <section class="max-w-lg mx-auto px-6 py-20">
+            <form action="https://formspree.io/f/mlgzerpb" method="POST"
+                class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+                <div class="grid grid-cols-2 border-b border-slate-800">
+                    <input type="text" name="name" placeholder="Name" required
+                        class="p-4 bg-transparent text-white outline-none border-r border-slate-800">
+                    <input type="email" name="email" placeholder="Email" required
+                        class="p-4 bg-transparent text-white outline-none">
+                </div>
+                <textarea name="message" rows="3" placeholder="Your project details..." required
+                    class="w-full p-4 bg-transparent text-white outline-none resize-none"></textarea>
+                <button
+                    class="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-black py-4 uppercase tracking-widest transition-all">Send
+                    Message</button>
+            </form>
+        </section>
+
+
+
+    </footer>
+
+    <div class="w-full overflow-hidden bg-slate-900 py-4 border-t border-emerald-500/30">
+        <div class="whitespace-nowrap animate-marquee">
+            <p style="font-family: 'Monotype Corsiva', 'Apple Chancery', cursive;"
+                class="inline-block text-xl md:text-2xl text-emerald-400 px-4">
+                "While the code is debugging, the programmer is evolving; keep compiling your dreams."
+                &nbsp;&nbsp;&nbsp;&nbsp; //
+                "Success is the result of a .filter() on failure and a .map() toward growth."
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMusic() {
+            const audio = document.getElementById('bg-audio');
+            const logo = document.getElementById('logo-ak');
+
+            if (audio.paused) {
+                audio.play();
+                // Lower volume slightly for a "faded" background effect
+                audio.volume = 0.5;
+                console.log("Classical music playing...");
+                // Optional: change opacity or add a glow when music is active
+                logo.style.opacity = "1";
+            } else {
+                audio.pause();
+                console.log("Music paused.");
+                logo.style.opacity = "0.8";
+            }
+        }
+
+        // --- Leaf Particles ---
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 2;
+                this.speed = Math.random() * 0.5 + 0.2;
+                this.color = 'rgba(16, 185, 129, 0.15)';
+            }
+            update() { this.y += this.speed; if (this.y > canvas.height) this.y = -10; }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.ellipse(this.x, this.y, this.size, this.size * 1.5, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < 40; i++) particles.push(new Particle());
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // --- UPDATED DATA WITH ALL CERTIFICATIONS ---
+        const cardData = [
+            { id: 1, category: "Core", title: "Bio", color: "bg-emerald-500", items: ["Born: 14 Feb 1999", "Location: Nepal", "Remote Ready"] },
+            { id: 2, category: "Education", title: "Study", color: "bg-slate-800", items: ["Purbanchal University", "Vivekananda Central", "Computer Engineering"] },
+            { id: 3, category: "Tech", title: "Stack", color: "bg-emerald-600", items: ["React & Tailwind", "Node.js & SQL", "Git & Docker"] },
+            { id: 4, category: "Learning", title: "Certs", color: "bg-slate-700", items: ["Saylor Academy", "HP Foundation", "FreeCodeCamp", "Google Professional"] }
+        ];
+
+        const grid = document.getElementById('dynamic-grid');
+        const searchBox = document.getElementById('searchBox');
+
+        function render(data) {
+            grid.innerHTML = data.map(card => `
+                <div class="bg-white/60 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/50 hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-10 h-10 ${card.color} rounded-2xl shadow-lg"></div>
+                        <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">${card.category}</span>
+                    </div>
+                    <h4 class="title-font text-2xl font-black text-slate-900 mb-4">${card.title}</h4>
+                    <ul class="space-y-2">
+                        ${card.items.map(item => `
+                            <li class="flex items-center gap-2 text-sm text-slate-500 font-medium">
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                                ${item}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        searchBox.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = cardData.filter(card =>
+                card.title.toLowerCase().includes(term) ||
+                card.items.some(i => i.toLowerCase().includes(term))
+            );
+            render(filtered);
+        });
+
+        render(cardData);
+
+    </script>
+</body>
+
+</html>
