@@ -7,7 +7,7 @@
     <title>Abhishek Karn | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&family=Outfit:wght@700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&family=Outfit:wght@700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -68,6 +68,11 @@
 
         .title-font {
             font-family: 'Outfit', sans-serif;
+        }
+
+        /* Added custom font family utility for Playfair Display */
+        .items-font {
+            font-family: 'Playfair Display', serif;
         }
 
         .glass-nav {
@@ -249,19 +254,23 @@
 
 
     <!-- Hero -->
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center px-6 text-center">
-        <h1
-            class="animate-float-name title-font text-7xl md:text-9xl font-black text-slate-900 mb-6 mt-6 tracking-tighter">
-            ABHISHEK<br>
-            <span class="text-emerald-500">KARN</span>
-        </h1>
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center px-6 text-center relative overflow-hidden">
+    
+    <img src="abhishek.png" id="parallax-bg-img" alt="Abhishek Background" 
+         class="rounded-[5rem] absolute w-[85%] max-w-md md:max-w-xl opacity-[0.4] pointer-events-none select-none z-0 transition-transform duration-75 ease-out">
 
+    <div class="relative z-10 flex flex-col items-center">
+    <h1 class="animate-float-name title-font text-5xl sm:text-7xl md:text-9xl font-black text-slate-900 mb-6 mt-6 tracking-tighter leading-none">
+        ABHISHEK<br>
+        <span class="text-emerald-500">KARN</span>
+    </h1>
 
-        <p
-            class="max-w-md font-mono font-medium leading-relaxed mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Computer Engineer crafting digital environments that are helpful, inclusive, and built for a smarter future.
-        </p>
-    </section>
+    <!-- Added a subtle glass background to lift the text clear off the image patterns -->
+    <p class="max-w-md mx-auto font-mono font-medium leading-relaxed mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-white/40 shadow-sm">
+        Computer Engineer crafting digital environments that are helpful, inclusive, and built for a smarter future.
+    </p>
+</div>
+</section>
 
     <!-- Details Grid -->
     <section id="details" class="max-w-7xl mx-auto px-6 py-24">
@@ -281,9 +290,9 @@
         <div
             class="bg-white/70 backdrop-blur-md rounded-[3rem] p-8 md:p-16 shadow-2xl flex flex-col md:flex-row items-center gap-12 border border-white/50">
             <div class="w-full md:w-1/3 overflow-hidden rounded-[2.5rem] shadow-lg relative group aspect-square">
-                <img src="IMG_20190224_135433.jpg" alt="nature"
+                <img src="./abhinature.jpg" alt="nature"
                     class="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-0">
-                <img src="FB_IMG_1702640690791.jpg" alt="religious"
+                <img src="./abhifront.jpg" alt="religious"
                     class="absolute inset-0 w-full h-full object-cover scale-125 opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100">
             </div>
             <div class="w-full md:w-2/3">
@@ -316,6 +325,53 @@
         </div>
     </section>
 
+    <!-- CERTIFICATIONS-->
+ <section class="max-w-6xl mx-auto px-6 py-12 mb-10">
+    <div class="max-w-4xl mx-auto text-center">
+        
+        <!-- Testimonial Line with Playfair Font and Forest Ink Color -->
+        <div class="mb-10 max-w-2xl mx-auto">
+            <span class="text-4xl text-[#0f9f6e] block mb-2 font-serif">“</span>
+            <p class="items-font text-xl md:text-2xl font-medium italic text-[#121A16] tracking-tight leading-relaxed">
+                "Logic ensures structure, but design builds the experience. Transforming complex algorithms into seamless, responsive human interfaces."
+            </p>
+            <div class="w-12 h-1 bg-gradient-to-r from-[#0f9f6e] to-teal-500 mx-auto mt-6 rounded-full"></div>
+        </div>
+        
+        <!-- 1. DESKTOP/TABLET VIEW: Runs the iframe smoothly on large viewports -->
+        <div class="hidden md:block w-full bg-white/70 backdrop-blur-md border border-white/50 p-3 sm:p-4 md:p-6 rounded-[2.5rem] shadow-xl overflow-hidden aspect-[4/3] sm:aspect-[16/10] md:h-[600px]">
+            <iframe 
+                src="developer.pdf.pdf" 
+                class="w-full h-full rounded-[1.8rem] border border-slate-100 bg-white" 
+                frameborder="0">
+                <p class="items-font text-[#121A16]">Your browser does not support embedded PDFs. <a href="developer.pdf.pdf" class="text-[#0f9f6e] underline">Click here to download it.</a></p>
+            </iframe>
+        </div>
+
+        <!-- 2. MOBILE VIEW: Replaces the broken iframe with an elegant tap-to-view fallback option -->
+        <div class="block md:hidden w-full max-w-sm mx-auto">
+            <a href="/developer.pdf.pdf" target="_blank" 
+               class="flex items-center justify-between p-5 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-3xl shadow-sm hover:border-[#0f9f6e] transition-all">
+                <div class="flex items-center gap-4 text-left">
+                    <i class="fa-solid fa-file-pdf text-red-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-xs tracking-tight normal-case">View Credentials Document</h4>
+                        <p class="text-[9px] text-slate-400 uppercase font-mono tracking-wider mt-0.5">Verified PDF Binder</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[#0f9f6e] text-sm"></i>
+            </a>
+        </div>
+
+        <!-- Verification Line -->
+        <p class="mt-6 font-mono text-[9px] text-slate-400 uppercase tracking-wider">
+            Credential ID: B68641000[cite: 1] • Authenticity verified at 
+            <a href="https://verify.broadwayinfosys.com" target="_blank" class="text-[#0f9f6e] hover:underline">
+                verify.broadwayinfosys.com[cite: 1]
+            </a>
+        </p>
+    </div>
+</section>
     <footer id="contact"
         class="max-w-6xl mx-auto px-6 pb-12 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
         <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-center">
@@ -444,9 +500,9 @@
         // --- UPDATED DATA WITH ALL CERTIFICATIONS ---
         const cardData = [
             { id: 1, category: "Core", title: "Bio", color: "bg-emerald-500", items: ["Born: 14 Feb 1999", "Location: Nepal", "Remote Ready"] },
-            { id: 2, category: "Education", title: "Study", color: "bg-slate-800", items: ["Purbanchal University", "Vivekananda Central", "Computer Engineering"] },
-            { id: 3, category: "Tech", title: "Stack", color: "bg-emerald-600", items: ["React & Tailwind", "Node.js & SQL", "Git & Docker"] },
-            { id: 4, category: "Learning", title: "Certs", color: "bg-slate-700", items: ["Saylor Academy", "HP Foundation", "FreeCodeCamp", "Google Professional"] }
+            { id: 2, category: "Education", title: "Study", color: "bg-slate-800", items: ["Purbanchal University", "Vivekananda Central", "Gautam Secondary School"] },
+            { id: 3, category: "Tech", title: "Stack", color: "bg-emerald-600", items: ["React & Next js", "Tailwind & Bootstrap", "Git & Github"] },
+            { id: 4, category: "Learning", title: "Certs", color: "bg-slate-700", items: ["Saylor Academy","Broadway Infosys", "HP Foundation", "FreeCodeCamp", "Google Professional"] }
         ];
 
         const grid = document.getElementById('dynamic-grid');
@@ -457,13 +513,14 @@
                 <div class="bg-white/60 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/50 hover-glow transition-all duration-300">
                     <div class="flex justify-between items-start mb-6">
                         <div class="w-10 h-10 ${card.color} rounded-2xl shadow-lg"></div>
-                        <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest">${card.category}</span>
+                        <span class="text-[10px] font-black text-[#368f8b] uppercase tracking-widest">${card.category}</span>
                     </div>
                     <h4 class="title-font text-2xl font-black text-slate-900 mb-4">${card.title}</h4>
                     <ul class="space-y-2">
                         ${card.items.map(item => `
-                            <li class="flex items-center gap-2 text-sm text-slate-500 font-medium">
-                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+                            <!-- Applied the custom .items-font class directly to the list items below -->
+                            <li class="items-font flex items-center gap-2 text-sm text-emerald-950 font-medium">
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></div>
                                 ${item}
                             </li>
                         `).join('')}
@@ -482,6 +539,21 @@
         });
 
         render(cardData);
+
+        // --- Parallax Effect to move image downward on scroll ---
+const bgImage = document.getElementById('parallax-bg-img');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    
+    // As you scroll down, this increases the translateY value, pushing the image down.
+    // Adjust 0.3 higher if you want it to move faster, or lower to slow it down.
+    const translateY = scrollTop * 0.7; 
+    
+    if (bgImage) {
+        bgImage.style.transform = `translateY(${translateY}px)`;
+    }
+});
 
     </script>
 </body>
